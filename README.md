@@ -24,11 +24,7 @@ I build web things, live on Linux, and keep starting hardware projects that end 
 ### what I use
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg" />
-    <img src="assets/stack-dark.svg" width="620" alt="Linux, Vue.js, Python, Claude, Node.js, PostgreSQL, Git, Supabase, Docker, Terraform, Tailscale, Hetzner" />
-  </picture>
+  <a href="https://www.kernel.org/"><img src="assets/stack/linux.svg" width="64" alt="Linux" title="Linux" /></a><a href="https://vuejs.org/"><img src="assets/stack/vuedotjs.svg" width="64" alt="Vue.js" title="Vue.js" /></a><a href="https://www.python.org/"><img src="assets/stack/python.svg" width="64" alt="Python" title="Python" /></a><a href="https://www.anthropic.com/claude"><img src="assets/stack/claude.svg" width="64" alt="Claude" title="Claude" /></a><a href="https://nodejs.org/"><img src="assets/stack/nodedotjs.svg" width="64" alt="Node.js" title="Node.js" /></a><a href="https://www.postgresql.org/"><img src="assets/stack/postgresql.svg" width="64" alt="PostgreSQL" title="PostgreSQL" /></a><a href="https://git-scm.com/"><img src="assets/stack/git.svg" width="64" alt="Git" title="Git" /></a><a href="https://supabase.com/"><img src="assets/stack/supabase.svg" width="64" alt="Supabase" title="Supabase" /></a><a href="https://www.docker.com/"><img src="assets/stack/docker.svg" width="64" alt="Docker" title="Docker" /></a><a href="https://www.terraform.io/"><img src="assets/stack/terraform.svg" width="64" alt="Terraform" title="Terraform" /></a><a href="https://tailscale.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack/tailscale-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/stack/tailscale-light.svg" /><img src="assets/stack/tailscale-dark.svg" width="64" alt="Tailscale" title="Tailscale" /></picture></a><a href="https://www.hetzner.com/"><img src="assets/stack/hetzner.svg" width="64" alt="Hetzner" title="Hetzner" /></a>
 </p>
 
 ### on repeat
