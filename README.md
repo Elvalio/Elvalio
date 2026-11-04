@@ -1,4 +1,4 @@
-<img src="assets/banner.svg" width="100%" alt="Elvalio — web, linux & too many side projects" />
+<img src="assets/banner.svg" width="100%" alt="harry@elvalio — fastfetch" />
 
 ### hey, I'm Harry 👋
 
@@ -22,7 +22,6 @@ overlays/        my stream overlays — Catppuccin, obviously
 
 ### random facts
 
-- daily driver is Linux Mint, Omarchy is next in line
 - I stream on Twitch as Elvalio
 - slowly de-googling everything I own
 - my coffee setup gets more attention than it deserves
