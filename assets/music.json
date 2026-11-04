@@ -1,9 +1,9 @@
 {
  "user": "Elvalio",
- "updated_at": "2026-11-04T20:14+01:00",
+ "updated_at": "2026-11-04T20:45+01:00",
  "last_played": {
-  "track": "Charm",
-  "artist": "Moe Shop"
+  "track": "FULL POWER",
+  "artist": "Creeds"
  },
  "top_tracks_all_time": [
   {
@@ -165,7 +165,7 @@
     283,
     196,
     114,
-    159,
+    166,
     151,
     143,
     190
@@ -277,9 +277,9 @@
   ]
  },
  "totals": {
-  "listens": 25348,
-  "hours_played": 1436,
+  "listens": 25355,
+  "hours_played": 1437,
   "hours_estimated": true,
-  "listens_this_week": 288
+  "listens_this_week": 295
  }
 }
