@@ -18,7 +18,6 @@ overlays/        my stream overlays — Catppuccin, obviously
 - **Watchlist** — films, shows, anime and manga in one place, because four apps was three too many.
 - **Urbex map** — 84 abandoned spots around Côtes-d'Armor, Brittany, packed into a single HTML file.
 - **Nook** — my own clipboard manager for Cinnamon, because I wanted `Super+V` to work my way.
-- a tiny tray indicator that tells me how much Claude Code I've burned through today.
 
 ### random facts
 
@@ -30,8 +29,3 @@ overlays/        my stream overlays — Catppuccin, obviously
   <img src="https://streak-stats.demolab.com?user=Elvalio&theme=catppuccin-mocha&hide_border=true&border_radius=10" alt="GitHub streak" />
 </p>
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/harry-troule/">LinkedIn</a> ·
-  <a href="mailto:harry.troule@ik.me">Mail</a> ·
-  <a href="https://twitch.tv/elvalio">Twitch</a>
-</p>
