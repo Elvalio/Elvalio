@@ -4,13 +4,7 @@
 
 I build web things, live on Linux, and keep starting hardware projects that end up way bigger than planned. Currently studying software engineering in Avignon, France.
 
-```txt
-~/Elvalio $ ls workbench/
-homelab/         a mini-PC that's supposed to run my whole life, eventually
-streamdeck-15/   15 buttons, a 7" screen, zero finished prototypes
-xarm/            driving a robot arm from Python over USB HID
-overlays/        my stream overlays — Catppuccin, obviously
-```
+<img src="assets/workbench.svg" width="100%" alt="ls workbench/ — homelab, streamdeck-15, xarm, overlays" />
 
 ### stuff I've made
 
