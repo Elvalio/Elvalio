@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:cba6f7,100:89b4fa&height=170&section=header&text=Elvalio&fontSize=60&fontColor=1e1e2e&fontAlignY=35&desc=~/Elvalio&descSize=16&descAlignY=58" width="100%" alt="Elvalio" />
+<img src="assets/banner.svg" width="100%" alt="Elvalio — web, linux & too many side projects" />
 
 ### hey, I'm Harry 👋
 
@@ -36,5 +36,3 @@ overlays/        my stream overlays — Catppuccin, obviously
   <a href="mailto:harry.troule@ik.me">Mail</a> ·
   <a href="https://twitch.tv/elvalio">Twitch</a>
 </p>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:89b4fa,100:cba6f7&height=100&section=footer" width="100%" alt="" />
