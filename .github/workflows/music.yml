@@ -2,7 +2,8 @@ name: Music card
 
 on:
   schedule:
-    - cron: "17 */6 * * *"
+    # Toutes les 30 minutes (à :17 et :47, hors de l'heure pile où GitHub est le plus chargé)
+    - cron: "17,47 * * * *"
   workflow_dispatch:
 
 permissions:
