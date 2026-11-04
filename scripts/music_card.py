@@ -129,7 +129,7 @@ def clip(s, cols):
 
 
 def fmt(n):
-    return f"{n:,}".replace(",", " ")
+    return f"{n:,}".replace(",", " ")
 
 
 def font_face(weight):
