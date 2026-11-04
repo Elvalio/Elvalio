@@ -1,4 +1,4 @@
-<img src="assets/banner.svg" width="100%" alt="harry@elvalio — fastfetch" />
+
 
 ### hey, I'm Harry 👋
 
