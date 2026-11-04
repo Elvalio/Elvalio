@@ -30,9 +30,9 @@ I build web things, live on Linux, and keep starting hardware projects that end 
 ### on repeat
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/music-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/music-light.svg" />
-  <img src="assets/music-dark.svg" width="100%" alt="ListenBrainz dashboard: top tracks all time and this week, top artists, listening heatmap" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Elvalio/Elvalio/data/assets/music-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Elvalio/Elvalio/data/assets/music-light.svg" />
+  <img src="https://raw.githubusercontent.com/Elvalio/Elvalio/data/assets/music-dark.svg" width="100%" alt="ListenBrainz dashboard: top tracks all time and this week, top artists, listening heatmap" />
 </picture>
 
 ### random facts
