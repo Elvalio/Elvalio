@@ -4,7 +4,11 @@
 
 I build web things, live on Linux, and keep starting hardware projects that end up way bigger than planned. Currently studying software engineering in Avignon, France.
 
-<img src="assets/workbench.svg" width="100%" alt="ls workbench/ — homelab, streamdeck-15, xarm, overlays" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/workbench-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/workbench-light.svg" />
+  <img src="assets/workbench-dark.svg" width="100%" alt="ls workbench/ — homelab, streamdeck-15, xarm, overlays" />
+</picture>
 
 ### stuff I've made
 
