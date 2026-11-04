@@ -1,4 +1,8 @@
-<img src="assets/banner.svg" width="100%" alt="harry@elvalio — fastfetch" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" />
+  <img src="assets/banner-dark.svg" width="100%" alt="harry@elvalio — fastfetch" />
+</picture>
 
 ### hey, I'm Harry 👋
 
@@ -17,6 +21,16 @@ I build web things, live on Linux, and keep starting hardware projects that end 
 - **Urbex map** — 84 abandoned spots around Côtes-d'Armor, Brittany, packed into a single HTML file.
 - **Nook** — my own clipboard manager for Cinnamon, because I wanted `Super+V` to work my way.
 
+### what I use
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg" />
+    <img src="assets/stack-dark.svg" width="620" alt="Linux, Vue.js, Python, Claude, Node.js, PostgreSQL, Git, Supabase, Docker, Terraform, Tailscale, Hetzner" />
+  </picture>
+</p>
+
 ### random facts
 
 - I stream on Twitch as Elvalio
@@ -24,6 +38,10 @@ I build web things, live on Linux, and keep starting hardware projects that end 
 - my coffee setup gets more attention than it deserves
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Elvalio&theme=catppuccin-mocha&hide_border=true&border_radius=10" alt="GitHub streak" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=Elvalio&theme=catppuccin-mocha&hide_border=true&border_radius=10" />
+    <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=Elvalio&theme=catppuccin-latte&hide_border=true&border_radius=10" />
+    <img src="https://streak-stats.demolab.com?user=Elvalio&theme=catppuccin-mocha&hide_border=true&border_radius=10" alt="GitHub streak" />
+  </picture>
 </p>
 
