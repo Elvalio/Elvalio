@@ -273,6 +273,18 @@ def build(listens):
 def write(d):
     for theme in THEMES:
         (ROOT / "assets" / f"music-{theme}.svg").write_text(render(theme, d), encoding="utf-8")
+    data = {
+        "user": USER,
+        "updated_at": datetime.now(TZ).isoformat(timespec="minutes"),
+        "last_played": {"track": d["last"][0], "artist": d["last"][1]} if d["last"] else None,
+        "top_tracks_all_time": [{"track": t, "artist": a, "plays": n} for t, a, n in d["all"]],
+        "top_tracks_week": [{"track": t, "artist": a, "plays": n} for t, a, n in d["week"]],
+        "top_artists_all_time": [{"artist": a, "plays": n} for a, n in d["artists"]],
+        "heatmap": {"days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "hours": d["grid"]},
+        "totals": {"listens": d["total"], "hours_played": d["hours"], "hours_estimated": d["guessed"],
+                   "listens_this_week": d["week_n"]},
+    }
+    (ROOT / "assets" / "music.json").write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":
