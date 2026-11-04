@@ -16,7 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 USER = os.environ.get("LB_USER", "Elvalio")
-DAYS = int(os.environ.get("LB_DAYS", "30"))
+WEEK_DAYS = 7
 TOP = 5
 API = "https://api.listenbrainz.org/1"
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,7 +57,7 @@ def fetch_listens(since):
                 return out
             out.append(l)
         max_ts = batch[-1]["listened_at"]
-        if len(out) > 20000:
+        if len(out) > 200000:
             break
     return out
 
@@ -83,42 +83,43 @@ def font_face(weight):
             f"src:url(data:font/woff2;base64,{data}) format('woff2');}}")
 
 
-def render(theme, top, last, label):
+def render(theme, sections, last):
+    """sections: list of (flag, top) where top is [((track, artist), n), ...]."""
     c = THEMES[theme]
     W, PAD, LH, CW, FS = 1000, 26, 30, 10.2, 17
-    rows = max(len(top), 1)
-    H = PAD * 2 + LH * (rows + 2) - 6
-    y0 = PAD + 18
+    lines = sum(1 + max(len(top), 1) for _, top in sections) + (len(sections) - 1) * 0.6 + (1 if last else 0)
+    H = int(PAD * 2 + LH * lines - 6)
     track_x = PAD + CW * 4
     artist_x = PAD + CW * 42
     t = []
 
-    def text(x, y, s, fill, bold=False, anchor="start", underline=False):
-        attrs = f' font-weight="700"' if bold else ""
+    def text(x, y, s, fill, bold=False, anchor="start"):
+        attrs = ' font-weight="700"' if bold else ""
         attrs += f' text-anchor="{anchor}"' if anchor != "start" else ""
-        attrs += ' text-decoration="underline"' if underline else ""
-        t.append(f'<text x="{x:.1f}" y="{y}" fill="{fill}"{attrs}>{html.escape(s)}</text>')
+        t.append(f'<text x="{x:.1f}" y="{y:.0f}" fill="{fill}"{attrs}>{html.escape(s)}</text>')
 
-    # prompt: ~/Elvalio ❯ listenbrainz top --tracks --month
-    text(PAD, y0, "~/Elvalio", c["blue"], bold=True)
-    px = PAD + CW * 10
-    t.append(f'<path d="M{px+1:.1f} {y0-11} L{px+8:.1f} {y0-5.5} L{px+1:.1f} {y0}" fill="none" stroke="{c["green"]}" '
-             f'stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
-    text(PAD + CW * 12, y0, "listenbrainz", c["green"])
-    text(PAD + CW * 25, y0, f"top --tracks {label}", c["text"])
-
-    if not top:
-        text(PAD, y0 + LH, "# no listens yet this month, press play", c["ov"])
-    for i, ((track, artist), n) in enumerate(top):
-        y = y0 + LH * (i + 1)
-        text(PAD, y, f"{i+1:02d}", c["ranks"][i], bold=True)
-        text(track_x, y, clip(track, 36), c["text"], bold=True)
-        text(artist_x, y, clip(artist, 28), c["sub"])
-        text(W - PAD, y, f"{n} play{'s' if n > 1 else ''}", c["ov"], anchor="end")
-
+    y = PAD + 18
+    for si, (flag, top) in enumerate(sections):
+        if si:
+            y += LH * 0.6
+        text(PAD, y, "~/Elvalio", c["blue"], bold=True)
+        px = PAD + CW * 10
+        t.append(f'<path d="M{px+1:.1f} {y-11:.0f} L{px+8:.1f} {y-5.5:.1f} L{px+1:.1f} {y:.0f}" fill="none" '
+                 f'stroke="{c["green"]}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
+        text(PAD + CW * 12, y, "listenbrainz", c["green"])
+        text(PAD + CW * 25, y, f"top --tracks {flag}", c["text"])
+        if not top:
+            y += LH
+            text(PAD, y, "# nothing here yet, press play", c["ov"])
+        for i, ((track, artist), n) in enumerate(top):
+            y += LH
+            text(PAD, y, f"{i+1:02d}", c["ranks"][i], bold=True)
+            text(track_x, y, clip(track, 36), c["text"], bold=True)
+            text(artist_x, y, clip(artist, 28), c["sub"])
+            text(W - PAD, y, f"{n} play{'s' if n > 1 else ''}", c["ov"], anchor="end")
+        y += LH
     if last:
-        y = y0 + LH * (rows + 1)
-        text(PAD, y, clip(f"# last played: {last[0]} — {last[1]}", 92), c["ov"])
+        text(PAD, y, clip(f"# last played: {last[0]} \u2014 {last[1]}", 92), c["ov"])
 
     style = (font_face(400) + font_face(700) +
              f"text{{font-family:'JBM','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;"
@@ -128,38 +129,39 @@ def render(theme, top, last, label):
             f'<rect width="{W}" height="{H}" rx="10" fill="{c["base"]}"/>\n' + "\n".join(t) + "\n</svg>\n")
 
 
-def main():
-    since = int(time.time()) - DAYS * 86400
-    listens = fetch_listens(since)
+def top_of(listens):
     counts, names = Counter(), {}
     for l in listens:
         m = l["track_metadata"]
         key = (m["track_name"].strip().casefold(), m["artist_name"].strip().casefold())
         counts[key] += 1
         names.setdefault(key, (m["track_name"].strip(), m["artist_name"].strip()))
-    top = [(names[k], n) for k, n in counts.most_common(TOP)]
+    return [(names[k], n) for k, n in counts.most_common(TOP)]
+
+
+def main():
+    listens = fetch_listens(0)  # whole history, newest first
+    week_start = int(time.time()) - WEEK_DAYS * 86400
+    week = [l for l in listens if l["listened_at"] >= week_start]
+    sections = [("--all-time", top_of(listens)), ("--week", top_of(week))]
     last = None
     if listens:
         m = listens[0]["track_metadata"]
-    else:
-        recent = get(f"/user/{USER}/listens?count=1").get("payload", {}).get("listens", [])
-        m = recent[0]["track_metadata"] if recent else None
-    if m:
         last = (m["track_name"].strip(), m["artist_name"].strip())
-
-    label = "--month" if DAYS == 30 else f"--{DAYS}d"
     for theme in THEMES:
-        (ROOT / "assets" / f"music-{theme}.svg").write_text(render(theme, top, last, label), encoding="utf-8")
-    print(f"{len(listens)} listens in the last {DAYS} days; top: {top}; last: {last}")
+        (ROOT / "assets" / f"music-{theme}.svg").write_text(render(theme, sections, last), encoding="utf-8")
+    print(f"{len(listens)} listens total, {len(week)} this week")
+    for flag, top in sections:
+        print(flag, top)
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--demo":
-        demo = [(("Bohemian Rhapsody", "Queen"), 14), (("夜に駆ける", "YOASOBI"), 11),
-                (("Une chanson très très longue avec un titre interminable", "Un artiste au nom long"), 9),
-                (("Get Lucky", "Daft Punk"), 6), (("Kids", "MGMT"), 1)]
+        demo = [(("Bohemian Rhapsody", "Queen"), 140), (("夜に駆ける", "YOASOBI"), 111),
+                (("Une chanson très très longue avec un titre interminable", "Un artiste au nom long"), 90),
+                (("Get Lucky", "Daft Punk"), 61), (("Kids", "MGMT"), 40)]
         for theme in THEMES:
             (ROOT / "assets" / f"music-{theme}.svg").write_text(
-                render(theme, demo, ("Kids", "MGMT"), "--month"), encoding="utf-8")
+                render(theme, [("--all-time", demo), ("--week", demo[:3])], ("Kids", "MGMT")), encoding="utf-8")
     else:
         main()

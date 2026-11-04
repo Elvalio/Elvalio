@@ -32,7 +32,7 @@ I build web things, live on Linux, and keep starting hardware projects that end 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/music-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/music-light.svg" />
-  <img src="assets/music-dark.svg" width="100%" alt="Top 5 tracks this month, from ListenBrainz" />
+  <img src="assets/music-dark.svg" width="100%" alt="Top 5 tracks all time and this week, from ListenBrainz" />
 </picture>
 
 ### random facts
