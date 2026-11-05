@@ -2,9 +2,15 @@ name: Music card
 
 on:
   schedule:
-    # Toutes les 30 minutes (à :17 et :47, hors de l'heure pile où GitHub est le plus chargé)
+    # Toutes les 30 minutes (à :17 et :47, hors de l'heure pile où GitHub est le plus chargé).
+    # Déclenché aussi depuis cron-job.org, les tâches programmées de GitHub étant peu fiables.
     - cron: "17,47 * * * *"
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Régénérer même sans nouvelle écoute"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -13,24 +19,52 @@ concurrency:
   group: music-card
   cancel-in-progress: true
 
+env:
+  LB_USER: Elvalio
+  # Mise à jour forcée au-delà de cet âge, même sans nouvelle écoute
+  # (la fenêtre « 7 derniers jours » glisse aussi sans écoute)
+  MAX_AGE_HOURS: 12
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
+      # Vérification légère : un seul appel à ListenBrainz (nombre d'écoutes),
+      # comparé à la version déjà publiée sur la branche data.
+      - name: Check for new listens
+        id: check
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            echo "Régénération forcée"
+            exit 0
+          fi
+          count=$(curl -fsS "https://api.listenbrainz.org/1/user/${LB_USER}/listen-count" | jq -r '.payload.count // empty') || count=""
+          published=$(git fetch -q --depth 1 origin data && git show origin/data:assets/music.json) || published="{}"
+          old=$(echo "$published" | jq -r '.totals.listens // empty')
+          updated=$(echo "$published" | jq -r '.updated_at // empty')
+          age=999
+          [ -n "$updated" ] && age=$(( ( $(date +%s) - $(date -d "$updated" +%s) ) / 3600 ))
+          echo "Écoutes : ListenBrainz=${count:-?}, publiées=${old:-?} · dernière publication il y a ${age} h"
+          if [ -n "$count" ] && [ "$count" = "$old" ] && [ "$age" -lt "$MAX_AGE_HOURS" ]; then
+            echo "Aucune nouvelle écoute et publication récente : rien à faire"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.check.outputs.skip != 'true'
         with:
           python-version: "3.12"
 
       - name: Build card from ListenBrainz
-        env:
-          LB_USER: Elvalio
+        if: steps.check.outputs.skip != 'true'
         run: python scripts/music_card.py
 
       # Les fichiers générés vont sur la branche « data », qui ne contient qu'un
       # seul commit, remplacé à chaque passage : l'historique ne grossit pas.
       - name: Publish to the data branch
+        if: steps.check.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
