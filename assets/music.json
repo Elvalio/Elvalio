@@ -1,0 +1,285 @@
+{
+ "user": "Elvalio",
+ "updated_at": "2026-11-14T20:01+01:00",
+ "last_played": {
+  "track": "two faced",
+  "artist": "purc"
+ },
+ "top_tracks_all_time": [
+  {
+   "track": "Vizioz (Titre Bonus)",
+   "artist": "Casseurs Flowters",
+   "plays": 75
+  },
+  {
+   "track": "BELLE CHANSON",
+   "artist": "HOUDI",
+   "plays": 65
+  },
+  {
+   "track": "AKANIZER",
+   "artist": "Laylow",
+   "plays": 64
+  },
+  {
+   "track": "Jimmy Punchline",
+   "artist": "Orelsan",
+   "plays": 57
+  },
+  {
+   "track": "Vapo Vapo (Remix)",
+   "artist": "Mandragora",
+   "plays": 47
+  }
+ ],
+ "top_tracks_week": [
+  {
+   "track": "two faced",
+   "artist": "purc",
+   "plays": 12
+  },
+  {
+   "track": "POOL",
+   "artist": "Rusui",
+   "plays": 8
+  },
+  {
+   "track": "Begin The Sacrifice",
+   "artist": "Fit For A King",
+   "plays": 7
+  },
+  {
+   "track": "UN CHASSÉ DANS SA GUEULE",
+   "artist": "Tootsi",
+   "plays": 5
+  },
+  {
+   "track": "eat, sleep, slay, 🔁",
+   "artist": "horsegiirL",
+   "plays": 5
+  }
+ ],
+ "top_artists_all_time": [
+  {
+   "artist": "Laylow",
+   "plays": 1274
+  },
+  {
+   "artist": "Orelsan",
+   "plays": 1192
+  },
+  {
+   "artist": "Vald",
+   "plays": 1180
+  },
+  {
+   "artist": "BEN plg",
+   "plays": 453
+  },
+  {
+   "artist": "Dr. Peacock",
+   "plays": 420
+  }
+ ],
+ "heatmap": {
+  "days": [
+   "mon",
+   "tue",
+   "wed",
+   "thu",
+   "fri",
+   "sat",
+   "sun"
+  ],
+  "hours": [
+   [
+    86,
+    37,
+    4,
+    0,
+    1,
+    9,
+    0,
+    45,
+    208,
+    216,
+    221,
+    323,
+    152,
+    203,
+    218,
+    280,
+    299,
+    346,
+    218,
+    169,
+    259,
+    215,
+    160,
+    182
+   ],
+   [
+    105,
+    42,
+    24,
+    14,
+    17,
+    16,
+    16,
+    44,
+    202,
+    225,
+    187,
+    258,
+    191,
+    251,
+    307,
+    348,
+    265,
+    275,
+    147,
+    135,
+    127,
+    144,
+    121,
+    145
+   ],
+   [
+    107,
+    56,
+    16,
+    20,
+    15,
+    15,
+    14,
+    77,
+    188,
+    223,
+    245,
+    266,
+    173,
+    228,
+    325,
+    300,
+    298,
+    298,
+    196,
+    114,
+    177,
+    172,
+    150,
+    197
+   ],
+   [
+    108,
+    47,
+    25,
+    12,
+    9,
+    0,
+    9,
+    65,
+    225,
+    300,
+    303,
+    295,
+    206,
+    309,
+    364,
+    365,
+    315,
+    282,
+    227,
+    182,
+    236,
+    227,
+    209,
+    109
+   ],
+   [
+    50,
+    25,
+    19,
+    13,
+    19,
+    17,
+    20,
+    41,
+    147,
+    206,
+    260,
+    278,
+    224,
+    266,
+    325,
+    262,
+    306,
+    262,
+    276,
+    174,
+    138,
+    83,
+    158,
+    167
+   ],
+   [
+    116,
+    65,
+    40,
+    32,
+    17,
+    6,
+    0,
+    25,
+    25,
+    42,
+    115,
+    196,
+    147,
+    205,
+    262,
+    225,
+    209,
+    147,
+    225,
+    168,
+    229,
+    229,
+    175,
+    168
+   ],
+   [
+    187,
+    103,
+    82,
+    90,
+    73,
+    46,
+    45,
+    39,
+    46,
+    56,
+    84,
+    227,
+    160,
+    211,
+    318,
+    231,
+    188,
+    225,
+    234,
+    152,
+    239,
+    185,
+    81,
+    80
+   ]
+  ]
+ },
+ "totals": {
+  "listens": 25942,
+  "hours_played": 1465,
+  "hours_estimated": true,
+  "listens_this_week": 409
+ }
+}
